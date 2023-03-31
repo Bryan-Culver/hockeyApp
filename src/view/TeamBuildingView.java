@@ -1,4 +1,4 @@
-package com.hockeyApp;
+package view;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -40,9 +40,7 @@ public class TeamBuildingView extends JFrame{
 		//this.pack();	
 	}
 	
-	/*@Override
-	public void onClose() {
-		
-	}*/
+	public void Close() {
+	}
 
 }
