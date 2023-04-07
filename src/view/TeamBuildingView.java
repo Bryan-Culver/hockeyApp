@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.Dimension;
-//import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 import javax.swing.JButton;
@@ -29,7 +28,6 @@ public class TeamBuildingView extends JFrame{
 		doneButton = new JButton("DONE");
 		panel = new JPanel(new GridBagLayout());
 		
-		//frame.add(teamTitleTF);
 		GridBagConstraintsObject gbco = new GridBagConstraintsObject(); //5,5,5,5,0,0,0,1,null, 0,0
 		
 		panel.add(teamTitleTF, gbco);
