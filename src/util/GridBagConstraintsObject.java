@@ -4,6 +4,7 @@
 package util;
 
 import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 /**This class is an object form of 
  * @author Bryan Culver
@@ -26,54 +27,54 @@ public class GridBagConstraintsObject extends GridBagConstraints{
 		return this;
 	}
 
-	public void insets(int testint) {
-		// TODO Auto-generated method stub
-		
+	public GridBagConstraintsObject insets(int insets) {
+		this.insets = new Insets(insets, insets, insets, insets);
+		return this;		
 	}
 
-	public void insets(int i, int j, int k, int l) {
-		// TODO Auto-generated method stub
-		
+	public GridBagConstraintsObject insets(int i, int j, int k, int l) {
+		this.insets = new Insets(i,j,k,l);
+		return this;
 	}
 
-	public void anchor(int firstLineEnd) {
-		// TODO Auto-generated method stub
-		
+	public GridBagConstraintsObject anchor(int anchor) {
+		this.anchor = anchor;
+		return this;
 	}
 
-	public void fill(int both) {
-		// TODO Auto-generated method stub
-		
+	public GridBagConstraintsObject fill(int fill) {
+		this.fill = fill;
+		return this;
 	}
 
-	public void gridheight(int i) {
-		// TODO Auto-generated method stub
-		
+	public GridBagConstraintsObject gridheight(int i) {
+		this.gridheight = i;
+		return this;
 	}
 
-	public void gridwidth(int i) {
-		// TODO Auto-generated method stub
-		
+	public GridBagConstraintsObject gridwidth(int i) {
+		this.gridwidth = i;
+		return this;
 	}
 
-	public void ipadx(int testint) {
-		// TODO Auto-generated method stub
-		
+	public GridBagConstraintsObject ipadx(int ipadx) {
+		this.ipadx = ipadx;
+		return this;
 	}
 
-	public void ipady(int testint) {
-		// TODO Auto-generated method stub
-		
+	public GridBagConstraintsObject ipady(int ipady) {
+		this.ipady = ipady;
+		return this;
 	}
 
-	public void weightx(double d) {
-		// TODO Auto-generated method stub
-		
+	public GridBagConstraintsObject weightx(double weightx) {
+		this.weightx = weightx;
+		return this;
 	}
 
-	public void weighty(double d) {
-		// TODO Auto-generated method stub
-		
+	public GridBagConstraintsObject weighty(double weighty) {
+		this.weighty = weighty;
+		return this;
 	}
 
 	

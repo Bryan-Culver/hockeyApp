@@ -21,7 +21,7 @@ import util.GridBagConstraintsObject;
  * @author Bryan Culver
  * @version 4 April 2023
  */
-class UtilGBCO {
+class GridBagConstraintsObjectTest {
 	static GridBagConstraintsObject gbco;
 	final static int testInt = 42;
 
