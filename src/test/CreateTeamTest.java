@@ -27,7 +27,7 @@ import view.TeamBuildingView;
  * @author "Bryan Culver"
  *
  */
-class CreateTeam {
+class CreateTeamTest {
 	private static TeamBuildingView view;
 
 	/**

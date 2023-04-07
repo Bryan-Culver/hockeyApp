@@ -1,12 +1,14 @@
 package view;
 
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+
+import util.GridBagConstraintsObject;
+
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
@@ -26,12 +28,11 @@ public class TeamBuildingView extends JFrame{
 		doneButton = new JButton("DONE");
 		panel = new JPanel(new GridBagLayout());
 		
-		//frame.add(teamTitleTF);
-		GridBagConstraints gbc = new GridBagConstraints(); //5,5,5,5,0,0,0,1,null, 0,0
+		GridBagConstraintsObject gbco = new GridBagConstraintsObject(); //5,5,5,5,0,0,0,1,null, 0,0
 		
-		panel.add(teamTitleTF, gbc);
-		panel.add(doneButton, gbc );
-		panel.add(teamTitleLabel, gbc);
+		panel.add(teamTitleTF, gbco);
+		panel.add(doneButton, gbco );
+		panel.add(teamTitleLabel, gbco);
 		this.getContentPane().add(panel);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
