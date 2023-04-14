@@ -21,14 +21,13 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import view.TeamBuildingView;
 
 /**
  * @author "Bryan Culver"
  *
  */
 class CreateTeamTest {
-	private static TeamBuildingView view;
+	
 
 	/**
 	 * @throws java.lang.Exception
@@ -43,7 +42,7 @@ class CreateTeamTest {
 	 */
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
-		view.Close();
+		
 	}
 
 	/**
