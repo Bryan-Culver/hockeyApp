@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import util.GridBagConstraintsObject;
 
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.JLabel;
 
 public class TeamBuildingView extends JFrame{
@@ -33,27 +34,27 @@ public class TeamBuildingView extends JFrame{
 		doneButton = new JButton("DONE");
 		
 		
-		GridBagConstraintsObject gbco = new GridBagConstraintsObject(); //5,5,5,5,0,0,0,1,null, 0,0
+		GridBagConstraintsObject gbco = new GridBagConstraintsObject(); 
 		gbco.insets(15).anchor(GridBagConstraints.LINE_START).fill(GridBagConstraints.VERTICAL).ipadx(2).ipady(2);
 		
-		//owner name (username)
-		//Location
-		//hockey team title
-		//Stanley Cup wins
-		//Last Year's standing
 		panel.add(new JLabel("Owner's Name"),gbco.gridx(0).gridy(0));
 		panel.add(new JLabel("Team's Location"), gbco.gridy(1).gridx(0));
-		//panel.add(teamTitleTF, gbco.gridy(2));
-		panel.add(teamTitleLabel, gbco.gridy(2));
-		panel.add(new JLabel("Stanley Cup Wins"), gbco.gridy(3));
-		panel.add(new JLabel("Last Year's standing"), gbco.gridy(4));
-		panel.add(doneButton, gbco.gridy(4).gridx(4).anchor(GridBagConstraints.LAST_LINE_END) );
+		panel.add(teamTitleLabel, gbco.gridy(2).gridx(0));
+		panel.add(new JLabel("Stanley Cup Wins"), gbco.gridy(3).gridx(0));
+		panel.add(new JLabel("Last Year's standing"), gbco.gridy(4).gridx(0));
+		
+		panel.add(new JTextField("username"),gbco.gridx(1).gridy(0).fill(GridBagConstraints.HORIZONTAL));
+		panel.add(new JTextField("City, State"), gbco.gridx(1).gridy(1));
+		panel.add(new JTextField("Team Name"), gbco.gridx(1).gridy(2));
+		panel.add(new JTextField("0"), gbco.gridx(1).gridy(3));
+		panel.add(new JTextField("12"), gbco.gridx(1).gridy(4).fill(GridBagConstraints.HORIZONTAL));
+		
+		panel.add(doneButton, gbco.gridy(5).gridx(4).anchor(GridBagConstraints.LAST_LINE_END));
 		this.getContentPane().add(panel);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		this.setSize(new Dimension(500,500));
-		//this.pack();
 	}
 	
 	public void Close() {
