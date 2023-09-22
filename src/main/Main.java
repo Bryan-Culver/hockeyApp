@@ -12,6 +12,10 @@ import view.TeamBuildingView;
  */
 public class Main {
 
+	/**
+	 * The main method that runs the app to open the first view. 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		run();
 	}
