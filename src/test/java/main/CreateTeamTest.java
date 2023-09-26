@@ -19,20 +19,26 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import main.Team;
+
 
 /**
  * @author "Bryan Culver"
  *
  */
-class CreateTeamTest {
-	
+class TeamTest {
+	Team teamTestA;
+	Team teamTestB;
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		//view = new TeamBuildingView("Test Build");
+		Team teamTestA = new Team();
+		assertEquals("   ", teamTestA.toString());
+		Team teamTestB = new Team("Detroit", "Red_Wings");
+		assertEquals("Detroit Red_Wings", teamTestB.toString());
 	}
 
 	/**
@@ -58,8 +64,15 @@ class CreateTeamTest {
 	}
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void testTeamCreation() {
+		assertTrue(this.teamTestA!=null);
+		assertEquals("Detroit", teamTestB.getTeamLocation());
+		assertEquals("Red_Wings", teamTestB.getTeamName());
+		
+		teamTestA.setTeamLocation("Buffalo");
+		teamTestB.setTeamName("Sabers");
+		assertEquals("Buffalo", teamTestA.getTeamLocation());
+		assertEquals("Sabers", teamTestA.getTeamName());
 	}
 
 }
