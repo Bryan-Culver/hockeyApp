@@ -4,6 +4,7 @@
 package main;
 
 import view.TeamBuildingView;
+import view.GameScreenView;
 
 /**
  * 
@@ -21,7 +22,7 @@ public class Main {
 	}
 
 	public static void run() {
-		TeamBuildingView view = new TeamBuildingView("The Fun Hockey App");
+		GameScreenView view = new GameScreenView("The Fun Hockey App");
 		view.setVisible(true);
 	}
 
