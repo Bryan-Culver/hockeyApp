@@ -1,20 +1,20 @@
 /**
  * 
  */
-package view;
+package main.java.view;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Vector;
+import java.util.Vector; // TODO: transition from Vector to ArrayList - bottleneck: JComboBox.
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
-import util.GridBagConstraintsObject;
+import main.java.util.GridBagConstraintsObject;
 
 /**
  * @author Bryan Culver
@@ -22,14 +22,24 @@ import util.GridBagConstraintsObject;
  */
 public class GameScreenView extends JFrame implements ActionListener{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L; // required for serializable class.
 	Vector<String> AwayTeamsList;
 	Vector<String> HomeTeamsList;
+	JButton runButton;
+	HockeyViewTextArea results= new HockeyViewTextArea("The winner is...", this.getBackground());
 	//private JPanel jPanel;
 	public GameScreenView(String title) {
 		super(title);
 		GridBagLayout gbl = new GridBagLayout();
 		JPanel panel = new JPanel(gbl);
-		JButton runButton = new JButton("Run Game Prediction");
+		runButton = new JButton("Run Game Prediction");
+		
+		runButton.addActionListener(this);
+		// TODO: the game can be implemented here.
+		//runButton.addActionListener(StartGame);
 		
 		HockeyViewTextArea HomeTeamLabel = new HockeyViewTextArea("Home Team", this.getBackground());
 		HockeyViewTextArea AwayTeamLabel = new HockeyViewTextArea("Away Team", this.getBackground());
@@ -60,6 +70,8 @@ public class GameScreenView extends JFrame implements ActionListener{
 		panel.add(AwayTeamSelection, gbco.gridx(1));
 		panel.add(runButton, gbco.gridy(3).anchor(GridBagConstraints.CENTER));
 		
+		panel.add(results, gbco.gridy(4).anchor(GridBagConstraints.CENTER));
+		
 		this.getContentPane().add(panel);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -73,23 +85,34 @@ public class GameScreenView extends JFrame implements ActionListener{
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		JComboBox<String> cbSelected = (JComboBox<String>)e.getSource();
-		cbSelected.getModel();
-		int selectedIndex = cbSelected.getSelectedIndex();
-		if(cbSelected.getName().equalsIgnoreCase("Home")){
-			// reset list for away team, minus the team selected for home. 
-			AwayTeamsList.clear();
-			AwayTeamsList.add(0, "Detroit Red Wings");
-			AwayTeamsList.add(1, "Chicago Black Hawks");
-			AwayTeamsList.add(2, "New York Rangers");
-			AwayTeamsList.remove(selectedIndex);
-		}else if(cbSelected.getName().equalsIgnoreCase("Away")) {
-			// reset list for home team, minus the team selected for away. 
-			HomeTeamsList.clear();
-			HomeTeamsList.add(0, "Detroit Red Wings");
-			HomeTeamsList.add(1, "Chicago Black Hawks");
-			HomeTeamsList.add(2, "New York Rangers");
-			HomeTeamsList.remove(selectedIndex);
+		Class<? extends Object> action = e.getSource().getClass();
+		if(action.isInstance(runButton)) {
+			runButtonClicked(e);
+			return;
+		}else {
+			JComboBox<String> cbSelected = (JComboBox<String>)e.getSource(); // TODO: figure out how to execute this more safely. 
+			cbSelected.getModel();
+			int selectedIndex = cbSelected.getSelectedIndex();
+			if(cbSelected.getName().equalsIgnoreCase("Home")){
+				// reset list for away team, minus the team selected for home. 
+				AwayTeamsList.clear();
+				AwayTeamsList.add(0, "Detroit Red Wings");
+				AwayTeamsList.add(1, "Chicago Black Hawks");
+				AwayTeamsList.add(2, "New York Rangers");
+				AwayTeamsList.remove(selectedIndex);
+			}else if(cbSelected.getName().equalsIgnoreCase("Away")) {
+				// reset list for home team, minus the team selected for away. 
+				HomeTeamsList.clear();
+				HomeTeamsList.add(0, "Detroit Red Wings");
+				HomeTeamsList.add(1, "Chicago Black Hawks");
+				HomeTeamsList.add(2, "New York Rangers");
+				HomeTeamsList.remove(selectedIndex);
+			}
 		}
+	}
+	
+	public void runButtonClicked(ActionEvent e) {
+		//add view of winner. 
+		results.setText("you're the winner!");
 	}
 }

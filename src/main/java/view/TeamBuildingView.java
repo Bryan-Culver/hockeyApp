@@ -1,4 +1,4 @@
-package view;
+package main.java.view;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import util.GridBagConstraintsObject;
+import main.java.util.GridBagConstraintsObject;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;

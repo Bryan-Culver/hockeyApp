@@ -1,7 +1,7 @@
 /**
  * 
  */
-package test;
+package test.java.util;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
-import util.GridBagConstraintsObject;
+import main.java.util.GridBagConstraintsObject;
 
 
 /** Test Class for the util.GridBag

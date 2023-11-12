@@ -1,7 +1,7 @@
 /**
  * 
  */
-package view;
+package main.java.view;
 
 import java.awt.Color;
 

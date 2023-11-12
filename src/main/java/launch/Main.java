@@ -1,10 +1,10 @@
 /**
  * This is the Main view for the Team building Interface window. 
  */
-package main;
+package main.java.launch;
 
-import view.TeamBuildingView;
-import view.GameScreenView;
+//import main.java.view.TeamBuildingView;
+import main.java.view.GameScreenView;
 
 /**
  * 
