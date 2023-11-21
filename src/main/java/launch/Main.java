@@ -23,7 +23,6 @@ public class Main {
 
 	public static void run() {
 		GameScreenView view = new GameScreenView("The Fun Hockey App");
-		view.setVisible(true);
 	}
 
 }

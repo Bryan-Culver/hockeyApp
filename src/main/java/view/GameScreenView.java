@@ -20,29 +20,40 @@ import main.java.util.GridBagConstraintsObject;
  * @author Bryan Culver
  * @version 7 October 2023
  */
-public class GameScreenView extends JFrame implements ActionListener{
+public class GameScreenView implements ActionListener{
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L; // required for serializable class.
+	JFrame welcomeView = new JFrame("Hockey App");
 	Vector<String> AwayTeamsList;
 	Vector<String> HomeTeamsList;
 	JButton runButton;
-	HockeyViewTextArea results= new HockeyViewTextArea("The winner is...", this.getBackground());
+	HockeyViewTextArea results= new HockeyViewTextArea("The winner is...", welcomeView.getBackground());
 	//private JPanel jPanel;
 	public GameScreenView(String title) {
-		super(title);
+		welcomeView.setTitle(title);
 		GridBagLayout gbl = new GridBagLayout();
 		JPanel panel = new JPanel(gbl);
 		runButton = new JButton("Run Game Prediction");
+		JButton deleteButton = new JButton("Delete Team");
+		JButton editButton = new JButton("Edit Team");
+		JButton newButton = new JButton("New Team");
+		
+		newButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				CreateTeamView newTeamView = new CreateTeamView("Create a New Team");
+				welcomeView.dispose();
+			}
+		});
 		
 		runButton.addActionListener(this);
 		// TODO: the game can be implemented here.
 		//runButton.addActionListener(StartGame);
 		
-		HockeyViewTextArea HomeTeamLabel = new HockeyViewTextArea("Home Team", this.getBackground());
-		HockeyViewTextArea AwayTeamLabel = new HockeyViewTextArea("Away Team", this.getBackground());
+		HockeyViewTextArea HomeTeamLabel = new HockeyViewTextArea("Home Team", welcomeView.getBackground());
+		HockeyViewTextArea AwayTeamLabel = new HockeyViewTextArea("Away Team", welcomeView.getBackground());
 		
 		HomeTeamsList = new Vector<>();
 		HomeTeamsList.add("Detroit Red Wings");
@@ -69,19 +80,24 @@ public class GameScreenView extends JFrame implements ActionListener{
 		panel.add(HomeTeamSelection, gbco.gridx(0).gridy(1));
 		panel.add(AwayTeamSelection, gbco.gridx(1));
 		panel.add(runButton, gbco.gridy(3).anchor(GridBagConstraints.CENTER));
+		panel.add(newButton, gbco.gridx(0).anchor(GridBagConstraints.WEST));
+		panel.add(editButton, gbco.gridy(4));
+		panel.add(deleteButton, gbco.gridy(5));
 		
-		panel.add(results, gbco.gridy(4).anchor(GridBagConstraints.CENTER));
+		panel.add(results, gbco.gridy(6).anchor(GridBagConstraints.CENTER));
 		
-		this.getContentPane().add(panel);
-		this.setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		welcomeView.getContentPane().add(panel);
+		welcomeView.setLocationRelativeTo(null);
+		welcomeView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		this.pack();
+		welcomeView.pack();
+		welcomeView.setVisible(true);
 		
 	}
 
 	/**
 	 * Action listener will remove the selected team from the other combo box
+	 * This may need to be implemented within the above class on each combo box/spinner.
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
