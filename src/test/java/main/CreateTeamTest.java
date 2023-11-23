@@ -11,9 +11,7 @@
  * @version 31 March 2023
  * @author Bryan Culver
  */
-package test;
-
-import static org.junit.jupiter.api.Assertions.*;
+package test.java.main;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
