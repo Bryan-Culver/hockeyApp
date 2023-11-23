@@ -1,11 +1,11 @@
 # HockeyApp
 An Educational Test-Driven exercise in Object-Oriented design using Java Swing. 
 
-This project gives you the task of managing a Hockey team using Java Swing, but it is really designed to practice 
-object-oriented design patterns with each added feature. The associated project also is organized to help facilitate 
-a Test-Driven Development approach.
+This project gives you the opportunity to predict the result of a Hockey game using Java Swing, but it is really
+designed to practice object-oriented design patterns with each added feature. The associated project also is organized
+to help facilitate a Test-Driven Development approach.
 
-Clone it, build it, run it, and click through some of the options available as a Team Owner. 
+Clone it, build it, run it, and run a few games. 
 Then, when you understand **what** the app does, explore **how** the code is structured, and imagine new features you 
 would like to add using classic and modern design patterns. 
 
@@ -23,18 +23,18 @@ Using your SSH key, enter the command `git clone git@github.com:Bryan-Culver/hoc
 If you're using HTTPS still, the command is `git clone https://github.com/Bryan-Culver/hockeyApp.git` in your terminal.
 
 ## Build It
+
 Currently, this project is a simple Java Swing project. Use your IDE to compile the program with at least JavaSE-17. 
 No other versions of Java have been tested at this time. As it is compiled, an executable is generated which will run
-the app. 
+the app.
 
 ## Run It
-When you run the app, you will see one Window that will display some basic amount of information about the team. 
+When you run the app, you will see one Window that will display inputs for the home team and away team. 
 
 As this project grows, more screens and "Views" will be required and will eventually be available. 
 
 ## Contributing
-There will be a "Contributing.md" file provided within this repository as soon as this project is ready to take on 
-contributions. 
+Please reference the "Contributing.md" doc provided in this repository. 
 
 You'll notice the **.gitignore** file has several file types that are specific to IDEs. Any additional files that your 
-editor will creat for metadata should be added to the **.gitignore** file.
+editor will create for metadata should be added to the **.gitignore** file.
