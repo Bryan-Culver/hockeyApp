@@ -9,7 +9,9 @@
 
 ### Gradle ###
 .gradle
+.gradle/
 /build/
+.metadata
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -31,7 +33,3 @@ hs_err_pid*
 .settings/
 .classpath
 /bin/
-
-# local Gradle files
-.gradle/
-.metadata/
