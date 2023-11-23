@@ -10,25 +10,25 @@ import java.util.concurrent.ThreadLocalRandom;
  *
  */
 public class Game {
-	private Team homeTeam;
-	private Team awayTeam;
+	private String homeTeam;
+	private String awayTeam;
 	private int scoreAway = 0;
 	private int scoreHome = 0;
 	//private boolean overtime;
 	private final int RANDOM_MAX = 100;
 	private final int RANDOM_MIN = 0;
 	
-	public Game(Team homeTeam, Team awayTeam) {
+	public Game(String homeTeam, String awayTeam) {
 		this.awayTeam = awayTeam;
 		this.homeTeam = homeTeam;
 		play();
 	}
 	
-	public Team getHomeTeam() {
+	public String getHomeTeam() {
 		return homeTeam;
 	}
 	
-	public Team getAwayTeam() {
+	public String getAwayTeam() {
 		return awayTeam;
 	}
 	
@@ -41,8 +41,8 @@ public class Game {
 	}
 	
 	private void play() {
-		int randomNum = ThreadLocalRandom.current().nextInt(RANDOM_MIN, RANDOM_MAX +1);
 		for (int period=1;period<=3;period++) {
+			int randomNum = ThreadLocalRandom.current().nextInt(RANDOM_MIN, RANDOM_MAX +1);
 			if(randomNum>60) {
 				scoreAway++;
 			}else {
@@ -51,10 +51,10 @@ public class Game {
 		}
 	}
 	
-	public String toString() {
+	/*public String toString() {
 		String result = "";
 		result = awayTeam.getLocation()+" "+awayTeam.getName()+" at "+homeTeam.getLocation()+" "+homeTeam.getName()+": "+scoreAway+" - "+scoreHome;
 		return result;
-	}
+	}*/
 
 }

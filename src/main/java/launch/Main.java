@@ -22,6 +22,7 @@ public class Main {
 	}
 
 	public static void run() {
+		@SuppressWarnings("unused")
 		GameScreenView view = new GameScreenView("The Fun Hockey App");
 	}
 

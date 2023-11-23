@@ -7,30 +7,35 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Vector; // TODO: transition from Vector to ArrayList - bottleneck: JComboBox.
+import java.util.ArrayList; // TODO: transition from Vector to ArrayList - bottleneck: JComboBox.
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JComboBox;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerListModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.JButton;
 
 import main.java.util.GridBagConstraintsObject;
+import main.java.model.Game;
 
 /**
  * @author Bryan Culver
  * @version 7 October 2023
  */
-public class GameScreenView implements ActionListener{
+public class GameScreenView{
 	
 	/**
 	 * 
 	 */
 	JFrame welcomeView = new JFrame("Hockey App");
-	Vector<String> AwayTeamsList;
-	Vector<String> HomeTeamsList;
+	ArrayList<String> awayTeamsList;
+	ArrayList<String> homeTeamsList;
 	JButton runButton;
 	HockeyViewTextArea results= new HockeyViewTextArea("The winner is...", welcomeView.getBackground());
-	//private JPanel jPanel;
+	JSpinner homeTeamSelection;
+	JSpinner awayTeamSelection;
 	public GameScreenView(String title) {
 		welcomeView.setTitle(title);
 		GridBagLayout gbl = new GridBagLayout();
@@ -43,42 +48,59 @@ public class GameScreenView implements ActionListener{
 		newButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				@SuppressWarnings("unused")
 				CreateTeamView newTeamView = new CreateTeamView("Create a New Team");
 				welcomeView.dispose();
 			}
 		});
 		
-		runButton.addActionListener(this);
-		// TODO: the game can be implemented here.
-		//runButton.addActionListener(StartGame);
+		runButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String matchupResults = "";
+				Game matchup = new Game(homeTeamSelection.getValue().toString(), awayTeamSelection.getValue().toString());
+				matchupResults = matchup.getAwayTeam()+" at "+matchup.getHomeTeam()+": "+matchup.getScoreAway()+" - "+matchup.getScoreHome();
+				results.setText(matchupResults);
+			}
+		});
 		
 		HockeyViewTextArea HomeTeamLabel = new HockeyViewTextArea("Home Team", welcomeView.getBackground());
 		HockeyViewTextArea AwayTeamLabel = new HockeyViewTextArea("Away Team", welcomeView.getBackground());
 		
-		HomeTeamsList = new Vector<>();
-		HomeTeamsList.add("Detroit Red Wings");
-		HomeTeamsList.add("Chicago Black Hawks");
-		HomeTeamsList.add("New York Rangers");
+		homeTeamsList = new ArrayList<>();
+		homeTeamsList.add("Detroit Red Wings");
+		homeTeamsList.add("Chicago Black Hawks");
+		homeTeamsList.add("New York Rangers");
 		
-		AwayTeamsList = new Vector<>();
-		AwayTeamsList.add("Detroit Red Wings");
-		AwayTeamsList.add("Chicago Black Hawks");
-		AwayTeamsList.add("New York Rangers");
-				
-		JComboBox<String> HomeTeamSelection = new JComboBox<String>(HomeTeamsList);
-		HomeTeamSelection.setName("Home");
-		JComboBox<String> AwayTeamSelection = new JComboBox<String>(AwayTeamsList);
-		AwayTeamSelection.setName("Away");
+		awayTeamsList = new ArrayList<>();
+		awayTeamsList.add("Detroit Red Wings");
+		awayTeamsList.add("Chicago Black Hawks");
+		awayTeamsList.add("New York Rangers");
 		
-		HomeTeamSelection.addActionListener(this);
-		AwayTeamSelection.addActionListener(this);
+		SpinnerListModel homeSpinnerModel = new SpinnerListModel(homeTeamsList);
+		homeTeamSelection = new JSpinner(homeSpinnerModel);
+		homeTeamSelection.setName("Home");
+		SpinnerListModel awaySpinnerModel = new SpinnerListModel(awayTeamsList);
+		awayTeamSelection = new JSpinner(awaySpinnerModel);
+		awayTeamSelection.setName("Away");
+		
+		homeTeamSelection.addChangeListener(new ChangeListener() {
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				// TODO Auto-generated method stub
+			}
+		});
+		awayTeamSelection.addChangeListener(new ChangeListener(){
+			public void stateChanged(ChangeEvent e) {
+				// away team actions. 
+			}
+		});
 		
 		GridBagConstraintsObject gbco = new GridBagConstraintsObject();
 		gbco.insets(15).anchor(GridBagConstraints.LINE_START).fill(GridBagConstraints.VERTICAL).ipadx(2).ipady(2);
 		panel.add(HomeTeamLabel, gbco.gridx(0).gridy(0));
 		panel.add(AwayTeamLabel, gbco.gridx(1));
-		panel.add(HomeTeamSelection, gbco.gridx(0).gridy(1));
-		panel.add(AwayTeamSelection, gbco.gridx(1));
+		panel.add(homeTeamSelection, gbco.gridx(0).gridy(1));
+		panel.add(awayTeamSelection, gbco.gridx(1));
 		panel.add(runButton, gbco.gridy(3).anchor(GridBagConstraints.CENTER));
 		panel.add(newButton, gbco.gridx(0).anchor(GridBagConstraints.WEST));
 		panel.add(editButton, gbco.gridy(4));
@@ -93,42 +115,5 @@ public class GameScreenView implements ActionListener{
 		welcomeView.pack();
 		welcomeView.setVisible(true);
 		
-	}
-
-	/**
-	 * Action listener will remove the selected team from the other combo box
-	 * This may need to be implemented within the above class on each combo box/spinner.
-	 */
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		Class<? extends Object> action = e.getSource().getClass();
-		if(action.isInstance(runButton)) {
-			runButtonClicked(e);
-			return;
-		}else {
-			JComboBox<String> cbSelected = (JComboBox<String>)e.getSource(); // TODO: figure out how to execute this more safely. 
-			cbSelected.getModel();
-			int selectedIndex = cbSelected.getSelectedIndex();
-			if(cbSelected.getName().equalsIgnoreCase("Home")){
-				// reset list for away team, minus the team selected for home. 
-				AwayTeamsList.clear();
-				AwayTeamsList.add(0, "Detroit Red Wings");
-				AwayTeamsList.add(1, "Chicago Black Hawks");
-				AwayTeamsList.add(2, "New York Rangers");
-				AwayTeamsList.remove(selectedIndex);
-			}else if(cbSelected.getName().equalsIgnoreCase("Away")) {
-				// reset list for home team, minus the team selected for away. 
-				HomeTeamsList.clear();
-				HomeTeamsList.add(0, "Detroit Red Wings");
-				HomeTeamsList.add(1, "Chicago Black Hawks");
-				HomeTeamsList.add(2, "New York Rangers");
-				HomeTeamsList.remove(selectedIndex);
-			}
-		}
-	}
-	
-	public void runButtonClicked(ActionEvent e) {
-		//add view of winner. 
-		results.setText("you're the winner!");
 	}
 }

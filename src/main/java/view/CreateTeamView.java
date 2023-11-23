@@ -62,6 +62,7 @@ public class CreateTeamView{
 			public void actionPerformed(ActionEvent e) {
 				//Check data submitted
 				//Save team information submitted
+				@SuppressWarnings("unused")
 				GameScreenView welcomeView = new GameScreenView("Hockey App");
 				createTeamFrame.dispose();
 			}
@@ -70,6 +71,7 @@ public class CreateTeamView{
 		cancelButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				@SuppressWarnings("unused")
 				GameScreenView welcomeView = new GameScreenView("Hockey App");
 				createTeamFrame.dispose();
 			}
