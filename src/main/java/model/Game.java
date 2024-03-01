@@ -5,31 +5,41 @@ package main.java.model;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-/**
+/**The Game class creates and runs a Hockey game, generating all stats that come from it. 
  * @author "Bryan Culver"
  *
  */
 public class Game {
-	private String homeTeam;
-	private String awayTeam;
+	private Team homeTeam;
+	private Team awayTeam;
 	private int scoreAway = 0;
 	private int scoreHome = 0;
 	//private boolean overtime;
 	private final int RANDOM_MAX = 100;
 	private final int RANDOM_MIN = 0;
 	
-	public Game(String homeTeam, String awayTeam) {
+	/**Game will take two teams, play a game between them, and generate stats from the game.
+	 * Stats are available through getters. 
+	 * 
+	 * @param homeTeam
+	 * @param awayTeam
+	 */
+	public Game(Team awayTeam, Team homeTeam) {
 		this.awayTeam = awayTeam;
 		this.homeTeam = homeTeam;
 		play();
 	}
 	
+	/**This getter provides a string of the team's location and name. 
+	 * 
+	 * @return String
+	 */
 	public String getHomeTeam() {
-		return homeTeam;
+		return homeTeam.toString();
 	}
 	
 	public String getAwayTeam() {
-		return awayTeam;
+		return awayTeam.toString();
 	}
 	
 	public int getScoreAway() {
