@@ -1,2 +1,10 @@
-apply plugin: 'java'
-apply plugin: 'eclipse'
+plugins{
+	id 'java'
+	id 'eclipse'
+	id 'jacoco'
+}
+
+test {
+	useJUnitPlatform()
+	finalizedBy jacocoTestReport 
+}

@@ -4,6 +4,7 @@
 package main.java.view;
 
 import java.awt.GridBagConstraints;
+
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +20,7 @@ import javax.swing.JButton;
 
 import main.java.util.GridBagConstraintsObject;
 import main.java.model.Game;
+import main.java.model.Team;
 
 /**
  * @author Bryan Culver
@@ -26,12 +28,9 @@ import main.java.model.Game;
  */
 public class GameScreenView{
 	
-	/**
-	 * 
-	 */
 	JFrame welcomeView = new JFrame("Hockey App");
-	ArrayList<String> awayTeamsList;
-	ArrayList<String> homeTeamsList;
+	ArrayList<Team> awayTeamsList;
+	ArrayList<Team> homeTeamsList;
 	JButton runButton;
 	HockeyViewTextArea results= new HockeyViewTextArea("The winner is...", welcomeView.getBackground());
 	JSpinner homeTeamSelection;
@@ -56,8 +55,10 @@ public class GameScreenView{
 		
 		runButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Team homeSelect = (Team) homeTeamSelection.getValue();
+				Team awaySelect = (Team) awayTeamSelection.getValue();
 				String matchupResults = "";
-				Game matchup = new Game(homeTeamSelection.getValue().toString(), awayTeamSelection.getValue().toString());
+				Game matchup = new Game(homeSelect, awaySelect);
 				matchupResults = matchup.getAwayTeam()+" at "+matchup.getHomeTeam()+": "+matchup.getScoreAway()+" - "+matchup.getScoreHome();
 				results.setText(matchupResults);
 			}
@@ -66,15 +67,15 @@ public class GameScreenView{
 		HockeyViewTextArea HomeTeamLabel = new HockeyViewTextArea("Home Team", welcomeView.getBackground());
 		HockeyViewTextArea AwayTeamLabel = new HockeyViewTextArea("Away Team", welcomeView.getBackground());
 		
-		homeTeamsList = new ArrayList<>();
-		homeTeamsList.add("Detroit Red Wings");
-		homeTeamsList.add("Chicago Black Hawks");
-		homeTeamsList.add("New York Rangers");
+		homeTeamsList = new ArrayList<Team>();
+		homeTeamsList.add(new Team("Detroit", "Red Wings"));
+		homeTeamsList.add(new Team("Chicago", "Black Hawks"));
+		homeTeamsList.add(new Team("New York", "Rangers"));
 		
 		awayTeamsList = new ArrayList<>();
-		awayTeamsList.add("Detroit Red Wings");
-		awayTeamsList.add("Chicago Black Hawks");
-		awayTeamsList.add("New York Rangers");
+		awayTeamsList.add(new Team("Detroit", "Red Wings"));
+		awayTeamsList.add(new Team("Chicago", "Black Hawks"));
+		awayTeamsList.add(new Team("New York", "Rangers"));
 		
 		SpinnerListModel homeSpinnerModel = new SpinnerListModel(homeTeamsList);
 		homeTeamSelection = new JSpinner(homeSpinnerModel);
