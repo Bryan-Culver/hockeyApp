@@ -8,3 +8,4 @@ test {
 	useJUnitPlatform()
 	finalizedBy jacocoTestReport 
 }
+compile 'javax.json:javax.json-api:1.0'
