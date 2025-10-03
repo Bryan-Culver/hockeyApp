@@ -1,13 +1,18 @@
-plugins{
+plugins {
 	id 'java'
 	id 'eclipse'
 	id 'jacoco'
 }
 
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'javax.json:javax.json-api:1.0'
+}
+
 test {
 	useJUnitPlatform()
 	finalizedBy jacocoTestReport 
-}
-dependencies{
-	implementation 'javax.json:javax.json-api:1.0'
 }
