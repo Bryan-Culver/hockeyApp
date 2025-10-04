@@ -11,7 +11,7 @@ import org.junit.Before;
  */
 public class StorageTest {
 	
-	public void constructStorageTest{
+	public void constructStorageTest(){
 		
 		@Before
 		public void storageObjects() {
@@ -25,7 +25,7 @@ public class StorageTest {
 		
 		@Test
 		public void loadFromStorage() {
-			assertEqual(ReadFromStorage)
+			assertEqual(ReadFromStorage);
 			
 		}
 		
