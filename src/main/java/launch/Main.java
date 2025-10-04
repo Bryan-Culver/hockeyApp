@@ -1,9 +1,10 @@
 /**
  * This is the Main view for the Team building Interface window. 
  */
-package main;
+package main.java.launch;
 
-import view.TeamBuildingView;
+//import main.java.view.TeamBuildingView;
+import main.java.view.GameScreenView;
 
 /**
  * 
@@ -21,8 +22,8 @@ public class Main {
 	}
 
 	public static void run() {
-		TeamBuildingView view = new TeamBuildingView("The Fun Hockey App");
-		view.setVisible(true);
+		@SuppressWarnings("unused")
+		GameScreenView view = new GameScreenView("The Fun Hockey App");
 	}
 
 }
