@@ -18,13 +18,11 @@ public class StorageTest {
 		@Test
 		public void saveToStorage() {
 			// assertTrue(WriteToStorage.save());
-			assertTrue(true);
 		}
 		
 		@Test
 		public void loadFromStorage() {
 			// assertEqual(ReadFromStorage.read());
-			assertTrue(true);
 		}
 		
 	}
