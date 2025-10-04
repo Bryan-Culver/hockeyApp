@@ -10,9 +10,7 @@ import org.junit.Before;
  * @version 2024-03-01
  */
 public class StorageTest {
-	
-	public void constructStorageTest(){
-		
+			
 		@Before
 		public void storageObjects() {
 		}
@@ -30,5 +28,3 @@ public class StorageTest {
 		}
 		
 	}
-
-}
