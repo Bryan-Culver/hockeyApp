@@ -1,7 +1,7 @@
 package test.java.model;
 
 import org.junit.jupiter.api.Test;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 
 /**A class to test the basic read and write functions of the 
  * classes ReadFromStorage and WriteToStorage. 
@@ -11,7 +11,7 @@ import org.junit.Before;
  */
 public class StorageTest {
 			
-		@Before
+		@BeforeEach
 		public void storageObjects() {
 		}
 		

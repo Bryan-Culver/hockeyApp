@@ -13,14 +13,8 @@
  */
 package test.java.model;
 
-import static org.junit.Assert.assertEquals;
-
-//import org.junit.jupiter.api.AfterAll;
-//import org.junit.jupiter.api.AfterEach;
-//import org.junit.jupiter.api.BeforeAll;
-//import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
-
 import main.java.model.*;
 
 
@@ -35,11 +29,6 @@ public class TeamTest {
 	@Test
 	public void testTeamCreation() {
 		Team teamTestA = new Team("Chicago", "Black Hawks");
-//		assert teamTestA.getLocation().equals("Chicago");
-//		assert teamTestA.getName().equals("Black Hawks");
-//		Team teamTestB = new Team("Detroit", "Red_Wings");
-//		assert teamTestB.getLocation().equals("Detroit");
-//		assert teamTestB.getName().equals("Red_Wings");
 		assertEquals("","Chicago",teamTestA.getLocation());
 		assertEquals("","Black Hawks",teamTestA.getName());
 		// toString is tested in GameTest
