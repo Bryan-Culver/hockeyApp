@@ -13,6 +13,6 @@ import jakarta.json.*;
  */
 public class WriteToStorage {
 	
-	JsonArray databaseWriter = new JsonArray();
+	JsonArray databaseWriter = Json.createArrayBuilder().build();
 
 }
